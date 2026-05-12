@@ -26,7 +26,6 @@ def main():
     ############################################
     # Question Two: Recursive Multiplication
     ############################################
-
     print("\nQuestion Two: Recursive Multiplication")
     counter = 0
     total = 0
@@ -56,10 +55,23 @@ def main():
     ############################################
     # Question Three: Recursive Lines
     ############################################
-
     print("\nQuestion Three: Recursive Lines")
-    recursive_lines()
+    while True:
+        counter = 1
+        x=0
+        y=0
+        try:
+            n = int(input("Enter a postive non zero integer for N: "))
+            if n < 1:
+                print("N must be greater than zero!")
+                continue
+            break
+        except ValueError:
+            print("N Must be a none zero integer!")
     print()
+    recursive_lines(n,x,y,counter)
+    print()
+
 
 def recursive_printing(number,counter):
     if counter == number + 1:
@@ -76,8 +88,17 @@ def recursive_multiplication(x,y,counter,total):
         return recursive_multiplication(x,y,counter + 1,total + y)
 
 
-def recursive_lines():
-    pass
+def recursive_lines(n,x,y,counter):
+    if y == n:
+        return
+    elif x < counter:
+        print("*",end="")
+        return recursive_lines(n,x + 1,y,counter)
+    else:
+        print()
+        x = 0
+        return recursive_lines(n,x,y + 1,counter + 1)
+        
 
 
 if __name__ == "__main__":
